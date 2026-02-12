@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Enrollment - Thomas Aquinas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap");
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f8fafc;
+      }
+      .serif-font {
+        font-family: "Playfair Display", serif;
+      }
+      .spinner {
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top: 3px solid #ffffff;
+        width: 24px;
+        height: 24px;
+        animation: spin 1s linear infinite;
+        display: none;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <nav class="bg-[#0a1d37] text-white py-4">
+      <div class="container mx-auto px-6 flex justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2940/2940651.png"
+            alt="Logo"
+            class="w-8 h-8 bg-white rounded-full p-1"
+          />
+          <span class="font-bold text-sm tracking-widest uppercase"
+            >The Thomas Aquinas</span
+          >
+        </a>
+        <a href="index.php" class="text-xs font-bold hover:text-yellow-400"
+          ><i class="fas fa-arrow-left mr-2"></i> Back to Website</a
+        >
+      </div>
+    </nav>
+
+    <main
+      class="flex-grow container mx-auto px-6 py-12 flex items-center justify-center"
+    >
+      <div
+        class="w-full max-w-4xl bg-white shadow-2xl rounded-3xl overflow-hidden grid md:grid-cols-5"
+      >
+        <div
+          class="md:col-span-2 bg-[#0a1d37] p-10 text-white hidden md:flex flex-col justify-between"
+        >
+          <div>
+            <h2 class="text-3xl serif-font mb-4">Enrollment Portal</h2>
+            <p class="text-blue-100/70 text-sm leading-relaxed mb-8">
+              Secure your spot for S.Y. 2025-2026. Please ensure all documents
+              are ready for uploading after this initial step.
+            </p>
+            <ul class="space-y-4 text-sm">
+              <li class="flex items-center space-x-3">
+                <i class="fas fa-id-card text-yellow-400"></i>
+                <span>PSA Birth Certificate</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <i class="fas fa-file-alt text-yellow-400"></i>
+                <span>Form 138 (Report Card)</span>
+              </li>
+            </ul>
+          </div>
+          <div class="text-xs text-blue-100/40">
+            <p>Contact Admissions Support:</p>
+            <p class="mt-2 font-bold">0999-881-2530</p>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 p-10">
+          <form id="enrollmentForm" class="space-y-6">
+            <h3 class="text-xl font-bold text-[#0a1d37] border-b pb-2 mb-6">
+              Student Information
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="col-span-2 sm:col-span-1">
+                <label
+                  class="block text-[10px] font-bold uppercase text-gray-400 mb-1"
+                  >First Name</label
+                >
+                <input
+                  type="text"
+                  name="firstName"
+                  required
+                  class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#0a1d37]/10 focus:bg-white outline-none transition-all"
+                />
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <label
+                  class="block text-[10px] font-bold uppercase text-gray-400 mb-1"
+                  >Last Name</label
+                >
+                <input
+                  type="text"
+                  name="lastName"
+                  required
+                  class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#0a1d37]/10 focus:bg-white outline-none transition-all"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                class="block text-[10px] font-bold uppercase text-gray-400 mb-1"
+                >Level Applying For</label
+              >
+              <select
+                name="gradeLevel"
+                required
+                class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm focus:bg-white outline-none transition-all"
+              >
+                <option value="">Choose Grade Level...</option>
+                <option>Pre-School</option>
+                <option>Elementary (G1-G6)</option>
+                <option>Junior High (G7-G10)</option>
+                <option>Senior High - STEM</option>
+                <option>Senior High - ABM</option>
+                <option>Senior High - HUMSS</option>
+                <option>Senior High - GAS</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                class="block text-[10px] font-bold uppercase text-gray-400 mb-1"
+                >Guardian Contact Number</label
+              >
+              <input
+                type="tel"
+                name="guardianNumber"
+                placeholder="09XX-XXX-XXXX"
+                required
+                class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm focus:bg-white outline-none transition-all"
+              />
+            </div>
+
+            <button
+              type="submit"
+              id="submitBtn"
+              class="w-full bg-[#0a1d37] text-white py-4 rounded-xl font-bold flex items-center justify-center space-x-3 hover:bg-[#15325a] transition-all transform active:scale-[0.98]"
+            >
+              <span>Submit Registration</span>
+              <div class="spinner" id="formSpinner"></div>
+            </button>
+          </form>
+
+          <div id="successMsg" class="hidden text-center py-10">
+            <div
+              class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl animate-bounce"
+            >
+              <i class="fas fa-check"></i>
+            </div>
+            <h4 class="text-2xl font-bold text-[#0a1d37] mb-2">
+              Registration Submitted!
+            </h4>
+            <p class="text-gray-500 text-sm">
+              Our registrar will contact you via mobile and email within 48
+              hours for document submission.
+            </p>
+            <a
+              href="index.php"
+              class="mt-8 inline-block text-[#0a1d37] font-bold hover:underline"
+              >Return to Home</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const enrollmentForm = document.getElementById("enrollmentForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const spinner = document.getElementById("formSpinner");
+      const successMsg = document.getElementById("successMsg");
+
+      enrollmentForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // UI Feedback
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = "0.7";
+        spinner.style.display = "block";
+
+        // Prepare data
+        const formData = new FormData(enrollmentForm);
+
+        try {
+          const response = await fetch("../app/Controller/EnrollmentController.php", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (response.ok) {
+            enrollmentForm.classList.add("hidden");
+            successMsg.classList.remove("hidden");
+          } else {
+            alert("Something went wrong. Please try again.");
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+            spinner.style.display = "none";
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Connection failed.");
+          submitBtn.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>
