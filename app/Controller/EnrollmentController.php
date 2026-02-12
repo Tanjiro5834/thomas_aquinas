@@ -19,4 +19,9 @@ class EnrollmentController {
         $enrollment = new Enrollment();
         return $enrollment->create($firstName, $lastName, $gradeLevel, $guardianNumber);
     }
+
+    public function getPending(){
+        $enrollment = new Enrollment();
+        return $this->enrollmentModel->getPendingQueue(); // make sure this exists in model
+    }
 }

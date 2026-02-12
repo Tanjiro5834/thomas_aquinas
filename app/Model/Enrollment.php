@@ -32,7 +32,7 @@ class Enrollment {
         $stmt = $this->db->prepare("
             SELECT *
             FROM enrollments
-            WHERE status = 'pending'
+            WHERE status = :status
             ORDER BY id ASC
             LIMIT 1
         ");

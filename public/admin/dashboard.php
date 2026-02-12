@@ -9,6 +9,14 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 }
 ?>
 
+<?php
+require_once __DIR__ . '/../../app/Controller/EnrollmentController.php';
+
+$controller = new EnrollmentController();
+$enrollments = $controller->getPending();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -150,88 +158,55 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
-                            <!-- Mock Row 1 -->
-                            <tr class="hover:bg-gray-50/50 transition-colors">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center space-x-3">
-                                        <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-[10px] font-bold text-blue-600">JS</div>
-                                        <div>
-                                            <p class="text-sm font-bold text-gray-800">Jane Smith</p>
-                                            <p class="text-[10px] text-gray-400">ID: 2024-0012</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="text-sm text-gray-600">Grade 11 - ABM</span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="text-sm text-gray-600">Oct 24, 2023</span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase status-pill-pending">Pending</span>
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <div class="flex items-center justify-end space-x-2">
-                                        <button class="p-2 text-gray-400 hover:text-blue-600 transition-colors"><i class="fas fa-eye"></i></button>
-                                        <button class="p-2 text-gray-400 hover:text-green-600 transition-colors"><i class="fas fa-check"></i></button>
-                                        <button class="p-2 text-gray-400 hover:text-red-600 transition-colors"><i class="fas fa-trash"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!-- Mock Row 2 -->
-                            <tr class="hover:bg-gray-50/50 transition-colors">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center space-x-3">
-                                        <div class="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-[10px] font-bold text-green-600">MB</div>
-                                        <div>
-                                            <p class="text-sm font-bold text-gray-800">Mark Brown</p>
-                                            <p class="text-[10px] text-gray-400">ID: 2024-0015</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="text-sm text-gray-600">Grade 7</span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="text-sm text-gray-600">Oct 22, 2023</span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase status-pill-approved">Approved</span>
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <div class="flex items-center justify-end space-x-2">
-                                        <button class="p-2 text-gray-400 hover:text-blue-600 transition-colors"><i class="fas fa-eye"></i></button>
-                                        <button class="p-2 text-gray-400 hover:text-red-600 transition-colors"><i class="fas fa-trash"></i></button>
-                                    </div>
+                        <?php if (!empty($enrollments)): ?>
+                            <?php foreach ($enrollments as $row): ?>
+                                <tr class="hover:bg-gray-50/50 transition-colors">
+
+                                    <!-- STUDENT NAME -->
+                                    <td class="px-6 py-4">
+                                        <p class="text-sm font-bold text-gray-800">
+                                            <?= htmlspecialchars($row['firstName'] . ' ' . $row['lastName']) ?>
+                                        </p>
+                                    </td>
+
+                                    <!-- GRADE LEVEL -->
+                                    <td class="px-6 py-4">
+                                        <span class="text-sm text-gray-600">
+                                            <?= htmlspecialchars($row['gradeLevel']) ?>
+                                        </span>
+                                    </td>
+
+                                    <!-- SUBMISSION DATE -->
+                                    <td class="px-6 py-4">
+                                        <span class="text-sm text-gray-600">
+                                            <?= date("M d, Y h:i A", strtotime($row['created_at'])) ?>
+                                        </span>
+                                    </td>
+
+                                    <!-- STATUS -->
+                                    <td class="px-6 py-4">
+                                        <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase
+                                            <?= $row['status'] === 'pending' ? 'status-pill-pending' :
+                                                ($row['status'] === 'approved' ? 'status-pill-approved' :
+                                                'status-pill-rejected') ?>">
+                                            <?= htmlspecialchars($row['status']) ?>
+                                        </span>
+                                    </td>
+
+                                    <!-- ACTIONS -->
+                                    <td class="px-6 py-4 text-right">
+                                        <button class="text-blue-500">View</button>
+                                    </td>
+
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="5" class="text-center py-6 text-gray-400">
+                                    No enrollments found.
                                 </td>
                             </tr>
-                            <!-- Mock Row 3 -->
-                            <tr class="hover:bg-gray-50/50 transition-colors">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center space-x-3">
-                                        <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-[10px] font-bold text-red-600">AL</div>
-                                        <div>
-                                            <p class="text-sm font-bold text-gray-800">Alice Lee</p>
-                                            <p class="text-[10px] text-gray-400">ID: 2024-0009</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="text-sm text-gray-600">Grade 12 - HUMSS</span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="text-sm text-gray-600">Oct 20, 2023</span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase status-pill-rejected">Rejected</span>
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <div class="flex items-center justify-end space-x-2">
-                                        <button class="p-2 text-gray-400 hover:text-blue-600 transition-colors"><i class="fas fa-eye"></i></button>
-                                        <button class="p-2 text-gray-400 hover:text-red-600 transition-colors"><i class="fas fa-trash"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
+                        <?php endif; ?>
                         </tbody>
                     </table>
                     

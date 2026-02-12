@@ -67,7 +67,7 @@
     <nav class="fixed w-full z-50 bg-[#0a1d37] text-white shadow-xl py-4" id="mainNav">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="https://cdn-icons-png.flaticon.com/512/2940/2940651.png" alt="Logo" class="w-10 h-10 bg-white rounded-full p-1">
+                <img src="./images/thomas_aquinas_logo.jpg" alt="Logo" class="w-10 h-10 bg-white rounded-full p-1">
                 <div>
                     <h1 class="font-bold text-sm tracking-widest uppercase leading-none">The Thomas Aquinas</h1>
                     <p class="text-[10px] text-yellow-400">INSTITUTE OF LEARNING</p>
@@ -282,7 +282,7 @@
         <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12">
             <div class="col-span-2 space-y-6">
                 <div class="flex items-center space-x-3">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2940/2940651.png" alt="Logo" class="w-10 h-10 bg-white rounded-full p-1">
+                    <img src="./images/thomas_aquinas_logo.jpg" alt="Logo" class="w-10 h-10 bg-white rounded-full p-1">
                     <span class="font-bold tracking-widest text-lg">THE THOMAS AQUINAS</span>
                 </div>
                 <p class="text-blue-100/60 max-w-sm font-light">The Official Page of The Thomas Aquinas Institute of Learning.</p>
