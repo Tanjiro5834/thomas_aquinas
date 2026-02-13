@@ -6,44 +6,8 @@
     <title>The Thomas Aquinas Institute of Learning</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="design/index.css">
     
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap');
-
-        :root {
-            --school-blue: #0a1d37;
-            --school-gold: #ffcc00;
-        }
-
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
-        .serif-font { font-family: 'Playfair Display', serif; }
-
-        .hero-gradient {
-            background: linear-gradient(rgba(10, 29, 55, 0.85), rgba(10, 29, 55, 0.95)),
-                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover; background-position: center; background-attachment: fixed;
-        }
-
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        .program-card { cursor: pointer; transition: all 0.3s ease; }
-        .program-card:hover { transform: translateY(-10px); }
-
-        /* Sidebar Styling */
-        #programSidebar {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 100;
-        }
-        #sidebarOverlay {
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-        #sidebarOverlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-    </style>
 </head>
 <body class="bg-gray-50 text-slate-800">
 
