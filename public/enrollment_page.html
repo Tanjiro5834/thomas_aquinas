@@ -205,10 +205,19 @@
 
         try {
           const response = await fetch(
-            "../app/Controller/EnrollmentController.php",
+            "../api/pre_register.php",
             {
               method: "POST",
-              body: formData,
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                  first_name: formData.get("firstName"),
+                  last_name: formData.get("lastName"),
+                  email: formData.get("email"),
+                  contact_number: formData.get("guardianNumber"),
+                  grade_level: formData.get("gradeLevel")
+              })
             },
           );
 
