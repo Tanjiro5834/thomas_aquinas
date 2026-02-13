@@ -81,7 +81,7 @@
                     <h3 class="text-3xl serif-font text-[#0a1d37]">Our Vision</h3>
                 </div>
                 <p class="text-gray-600 leading-relaxed text-lg">
-                    To be a premier learning institution that produces globally competitive individuals grounded in Christian values, academic excellence, and social responsibility, ready to lead in an ever-changing world.
+                    The Thomas Aquinas Institute of Learning aims to be a premium learning institution which builds a culture of excellence and dynamism today and leaders of tomorrow.
                 </p>
             </div>
             <div class="reveal" style="transition-delay: 200ms;">
@@ -92,7 +92,7 @@
                     <h3 class="text-3xl serif-font text-[#0a1d37]">Our Mission</h3>
                 </div>
                 <p class="text-gray-600 leading-relaxed text-lg">
-                    The Thomas Aquinas Institute of Learning is dedicated to providing a dynamic and holistic education. We commit to nurturing students' potential through innovative teaching, character formation, and a supportive community.
+                    Strength and confidence through truthfulness and excellence in education.
                 </p>
             </div>
         </div>
