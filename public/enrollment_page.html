@@ -197,19 +197,20 @@
       enrollmentForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        // UI Feedback
         submitBtn.disabled = true;
         submitBtn.style.opacity = "0.7";
         spinner.style.display = "block";
 
-        // Prepare data
         const formData = new FormData(enrollmentForm);
 
         try {
-          const response = await fetch("../app/Controller/EnrollmentController.php", {
-            method: "POST",
-            body: formData,
-          });
+          const response = await fetch(
+            "../app/Controller/EnrollmentController.php",
+            {
+              method: "POST",
+              body: formData,
+            },
+          );
 
           if (response.ok) {
             enrollmentForm.classList.add("hidden");

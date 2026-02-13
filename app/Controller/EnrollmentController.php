@@ -22,6 +22,6 @@ class EnrollmentController {
 
     public function getPending(){
         $enrollment = new Enrollment();
-        return $this->enrollmentModel->getPendingQueue(); // make sure this exists in model
+        return $this->enrollmentModel->getPendingQueue();
     }
 }

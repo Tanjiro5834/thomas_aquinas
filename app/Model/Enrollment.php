@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../Core/Database.php';
 
 class Enrollment {
-     private $db;
+    private $db;
 
     public function __construct() {
         $this->db = Database::getInstance()->getConnection();
